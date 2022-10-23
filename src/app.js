@@ -50,35 +50,6 @@ function showTemperature(response) {
     seekForecast(response.data.coordinates)
 }
 
-// Unit conversion Fahrenheit
-function showFahrenheitData(event) {
-    event.preventDefault();
-    celsiusLink.classList.remove("active");
-    fahrenheitLink.classList.add("active");
-    let fahrenheitTemperature = (celsiusTemperature * 1.8) + 32;
-    let displayTemperature = document.querySelector("#degrees");
-    displayTemperature.innerHTML = Math.round(fahrenheitTemperature);
-    
-}
-
-//Unit conversion Celsius
-function showCelsiusData(event) {
-    event.preventDefault();
-    fahrenheitLink.classList.remove("active");
-    celsiusLink.classList.add("active");
-    let displayTemperature = document.querySelector("#degrees");
-    displayTemperature.innerHTML = Math.round(celsiusTemperature);
-    
-}
-
-let celsiusTemperature = null;
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitData);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusData);
-
 //Displaying Forecast in HTML
 function forecastFormatDate(timestamp) {
     let date = new Date(timestamp * 1000);
@@ -95,7 +66,7 @@ function showForecast(response) {
 
     let forecastHTML = ``;
     dailyForecast.forEach(function (forecastDay, index) {
-        if (index < 5){
+        if (index < 5 ){
         forecastHTML = forecastHTML + `
             <div class="row forecast-day">
                 <div class="col-6">
@@ -117,7 +88,7 @@ function showForecast(response) {
 // Search Engine functionality
 function search(city) {
     let apiKey = `7a45btfdd9a2a5b0bb56a376f3of7ede`;
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(showTemperature);
 }
