@@ -84,8 +84,15 @@ h3{
 }
 
 .find{
-    padding-top: 10px;
+    padding-top: 50px;
     text-align: center;
+}
+
+button{
+    background-color: transparent;
+    border: 0px;
+    color: rgb(70, 64, 64);
+    
 }
 
 input{
