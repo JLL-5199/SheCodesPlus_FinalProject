@@ -85,6 +85,35 @@ function showForecast(response) {
     forecastSection.innerHTML = forecastHTML;
 }
 
+// Unit conversion Fahrenheit
+function showFahrenheitData(event) {
+    event.preventDefault();
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+    let fahrenheitTemperature = (celsiusTemperature * 1.8) + 32;
+    let displayTemperature = document.querySelector("#degrees");
+    displayTemperature.innerHTML = Math.round(fahrenheitTemperature);
+    
+}
+
+//Unit conversion Celsius
+function showCelsiusData(event) {
+    event.preventDefault();
+    fahrenheitLink.classList.remove("active");
+    celsiusLink.classList.add("active");
+    let displayTemperature = document.querySelector("#degrees");
+    displayTemperature.innerHTML = Math.round(celsiusTemperature);
+    
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitData);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusData);
+
 // Search Engine functionality
 function search(city) {
     let apiKey = `7a45btfdd9a2a5b0bb56a376f3of7ede`;
