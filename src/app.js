@@ -16,6 +16,16 @@ function showDate(timestamp) {
     return `${day} ${hours}:${minutes}`;
 }
 
+//Get the Forecast API
+function seekForecast(coordinates) {
+    let apiKey = `7a45btfdd9a2a5b0bb56a376f3of7ede`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(showForecast);
+}
+
+// Displaying all the data for given city
+
 function showTemperature(response) {
     let displayCity = document.querySelector("h1");
     let displayDate = document.querySelector("#today");
@@ -24,8 +34,6 @@ function showTemperature(response) {
     let displayIcon = document.querySelector("#current-icon");
     let displayTemperature = document.querySelector("#degrees");
     let displayWind = document.querySelector("#wind");
-
-    showForecast();
 
     celsiusTemperature = Math.round(response.data.temperature.current);
 
@@ -37,6 +45,9 @@ function showTemperature(response) {
     displayIcon.setAttribute("alt", response.data.condition.description);
     displayTemperature.innerHTML = Math.round(celsiusTemperature);
     displayWind.innerHTML = Math.round(response.data.wind.speed);
+
+
+    seekForecast(response.data.coordinates)
 }
 
 // Unit conversion Fahrenheit
@@ -68,8 +79,8 @@ fahrenheitLink.addEventListener("click", showFahrenheitData);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusData);
 
-//Displaying Forecast
-function showForecast() {
+//Displaying Forecast in HTML
+function showForecast(response) {
     let forecastSection = document.querySelector("#forecast");
 
     let forecastHTML = ``;
@@ -94,7 +105,7 @@ function showForecast() {
 
 // Search Engine functionality
 function search(city) {
-    let apiKey = "7a45btfdd9a2a5b0bb56a376f3of7ede";
+    let apiKey = `7a45btfdd9a2a5b0bb56a376f3of7ede`;
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
     axios.get(apiUrl).then(showTemperature);
