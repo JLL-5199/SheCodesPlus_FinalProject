@@ -80,24 +80,35 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusData);
 
 //Displaying Forecast in HTML
+function forecastFormatDate(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    return days[day];
+}
+
 function showForecast(response) {
+    let dailyForecast = response.data.daily;
+
     let forecastSection = document.querySelector("#forecast");
 
     let forecastHTML = ``;
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    days.forEach(function (day) {
+    dailyForecast.forEach(function (forecastDay, index) {
+        if (index < 5){
         forecastHTML = forecastHTML + `
             <div class="row forecast-day">
                 <div class="col-6">
-                    <h3>${day}<span class="forecast-date">10/10/2022</span></h3>
+                    <h3>${forecastFormatDate(forecastDay.time)}</h3>
                 </div>
                 <div class="col-4">
-                    <p><i class="fa-solid fa-cloud"></i></p>
+                    <p><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" alt="${forecastDay.condition.icon}"></p>
                 </div>
                 <div class="col-1">
-                    <p>12°</p>
+                    <p>${Math.round(forecastDay.temperature.day)}</p>
                 </div>
             </div>`;
+        }
     })
 
     forecastSection.innerHTML = forecastHTML;
