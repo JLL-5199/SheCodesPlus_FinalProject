@@ -1,10 +1,11 @@
 .weather-app{
+    background: linear-gradient(to top, #dfe9f3 0%, white 100%);
     border: 1px solid #847C7C;
     border-radius: 15px;
     font-family: 'Koh Santepheap', cursive;
     margin: 0 auto;
     margin-top: 70px;
-    max-width: 400px;
+    max-width: 600px;
 }
 
 .head{
