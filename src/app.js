@@ -25,6 +25,8 @@ function showTemperature(response) {
     let displayTemperature = document.querySelector("#degrees");
     let displayWind = document.querySelector("#wind");
 
+    showForecast();
+
     celsiusTemperature = Math.round(response.data.temperature.current);
 
     displayCity.innerHTML = response.data.city;
@@ -66,6 +68,29 @@ fahrenheitLink.addEventListener("click", showFahrenheitData);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusData);
 
+//Displaying Forecast
+function showForecast() {
+    let forecastSection = document.querySelector("#forecast");
+
+    let forecastHTML = ``;
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    days.forEach(function (day) {
+        forecastHTML = forecastHTML + `
+            <div class="row forecast-day">
+                <div class="col-6">
+                    <h3>${day}<span class="forecast-date">10/10/2022</span></h3>
+                </div>
+                <div class="col-4">
+                    <p><i class="fa-solid fa-cloud"></i></p>
+                </div>
+                <div class="col-1">
+                    <p>12°</p>
+                </div>
+            </div>`;
+    })
+
+    forecastSection.innerHTML = forecastHTML;
+}
 
 // Search Engine functionality
 function search(city) {
