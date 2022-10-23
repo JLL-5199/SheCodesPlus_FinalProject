@@ -73,14 +73,14 @@ function showForecast(response) {
         if (index < 5 ){
         forecastHTML = forecastHTML + `
             <div class="row forecast-day">
-                <div class="col-6">
+                <div class="col-6 forecast-date">
                     <h3>${forecastFormatDate(forecastDay.time)}</h3>
                 </div>
-                <div class="col-4">
-                    <p><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" alt="${forecastDay.condition.icon}"></p>
+                <div class="col-2">
+                    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" alt="${forecastDay.condition.icon}">
                 </div>
-                <div class="col-1">
-                    <p>${Math.round(forecastDay.temperature.day)}</p>
+                <div class="col-4 forecast-temperature">
+                    <p>Max: ${Math.round(forecastDay.temperature.maximum)} <br> Min: ${Math.round(forecastDay.temperature.minimum)}</p>
                 </div>
             </div>`;
         }

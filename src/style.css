@@ -59,8 +59,20 @@
 }
 
 .forecast-day{
+    height: 80px;
     padding-bottom: 10px;
+    padding-left: 30px;
     padding-top: 10px;
+}
+
+.forecast-date{
+    height: 80px;
+    padding-top: 30px;
+}
+
+.forecast-temperature{
+    padding-top: 20px;
+    text-align: center;
 }
 
 h3{
