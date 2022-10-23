@@ -1,0 +1,72 @@
+.weather-app{
+    border: 1px solid #847C7C;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 70px;
+    max-width: 400px;
+}
+
+.head{
+    display:block;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+}
+
+.today{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.deg-sky-today{
+    list-style-type: none;
+    text-transform: capitalize;
+}
+
+.current-temperature .active{
+    color: #000000;
+    cursor:default;
+    text-decoration: none;
+}
+
+.today-stats{
+    list-style-type: none;
+}
+
+.forecast{
+    display:block;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.forecast-day{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+h3{
+    font-size: 20px;
+}
+
+.forecast-date{
+    font-size: 15px;
+}
+
+.find{
+    padding-top: 10px;
+    text-align: center;
+}
+
+input{
+    text-align: center;
+    width: 100%;
+}
+
+h4{
+    display: block;
+    font-size: 15px;
+    margin: 0 auto;
+    text-align: center;
+}
+
