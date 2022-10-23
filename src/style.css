@@ -21,7 +21,23 @@
     padding-top: 20px;
 }
 
+.weather-icon img{
+    display:block;
+    margin-left: 50px;
+}
+
+.head-data{
+    margin-top:20px;
+}
+
 .deg-sky-today{
+    display: flex;
+    list-style-type: none;
+    margin-bottom: -5px;
+    text-transform: capitalize;
+}
+
+.weather-description{
     list-style-type: none;
     text-transform: capitalize;
 }

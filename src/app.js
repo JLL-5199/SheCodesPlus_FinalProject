@@ -13,7 +13,7 @@ function showDate(timestamp) {
         minutes = `0${minutes}`;
     }
 
-    return `${day} ${hours}:${minutes}`;
+    return `<em>Last updated: ${day} ${hours}:${minutes}</em>`;
 }
 
 //Get the Forecast API
@@ -53,10 +53,14 @@ function showTemperature(response) {
 //Displaying Forecast in HTML
 function forecastFormatDate(timestamp) {
     let date = new Date(timestamp * 1000);
+
+    let calendarDate = date.getDate();
     let day = date.getDay();
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let month = date.getMonth();
+    let year = date.getFullYear();
 
-    return days[day];
+    return `${days[day]} ${calendarDate}.${month+1}.${year}`;
 }
 
 function showForecast(response) {
